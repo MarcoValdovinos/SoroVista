@@ -87,8 +87,6 @@ func (s *Server) Routes() chi.Router {
 // HealthHandler serves GET /health at the root. It reports 200 when the
 // configured source is reachable and 503 when it is not, so it works as a
 // container or load-balancer probe.
-// HealthHandler returns the health status of the service.
-// It is used by monitoring systems to verify that the application is alive and ready.
 func (s *Server) HealthHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		status := s.src.Status(r.Context())
